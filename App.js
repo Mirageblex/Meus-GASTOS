@@ -1,20 +1,51 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Meus GASTOS</Text>
-      <StatusBar style="auto" />
+    <View style={estilos.container}>
+      <Text style={estilos.texto}>
+        
+      </Text>    
+      <TouchableOpacity style={estilos.button}>
+        <Text>
+          Login
+        </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={estilos.button}>
+        <Text>
+          Não tenho login
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const estilos = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0000ff',
-    alignItems: 'right',
-    justifyContent: 'left',
+    backgroundColor: '#FFA630',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    
+    
+    
+    
   },
+  texto:{
+    color: "#000",
+    fontSize: 14
+  },
+
+  button:{
+    backgroundColor: "#fff",
+    paddingHorizontal: 42,
+    paddingVertical: 16,
+    borderRadius: 25,
+    width: "70%",
+    marginBottom: -200,
+    marginTop: 220,
+    
+  }
 });
