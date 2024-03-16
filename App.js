@@ -1,51 +1,70 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-
+import React, { useState, useEffect } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
+ 
 export default function App() {
+  const [login, setLogin] = useState('');
+  const [noLogin, setNoLogin] = useState(false);
+  const [message, setMessage] = useState('');
+ 
+  useEffect(() => {
+    if (!login && !noLogin) {
+      setMessage('Campo vazio');
+    } else {
+      setMessage('');
+    }
+  }, [login, noLogin]);
+ 
   return (
-    <View style={estilos.container}>
-      <Text style={estilos.texto}>
-        
-      </Text>    
-      <TouchableOpacity style={estilos.button}>
-        <Text>
-          Login
-        </Text>
+    <View style={styles.container}>
+      <Text style={styles.texto}>{message}</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Login"
+        onChangeText={setLogin}
+        value={login}
+      />
+      <TouchableOpacity style={styles.button} onPress={() => setNoLogin(true)}>
+        <Text>Não tenho login</Text>
       </TouchableOpacity>
-
-      <TouchableOpacity style={estilos.button}>
-        <Text>
-          Não tenho login
-        </Text>
+      <TouchableOpacity style={styles.button} onPress={() => console.log('Entrar')}>
+        <Text>Entrar</Text>
       </TouchableOpacity>
     </View>
   );
 }
-
-const estilos = StyleSheet.create({
+ 
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFA630',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    
-    
-    
-    
   },
-  texto:{
-    color: "#000",
-    fontSize: 14
+  texto: {
+    color: '#000',
+    fontSize: 14,
   },
-
-  button:{
-    backgroundColor: "#fff",
+  input: {
+    backgroundColor: '#fff',
     paddingHorizontal: 42,
     paddingVertical: 16,
     borderRadius: 25,
-    width: "70%",
-    marginBottom: -200,
-    marginTop: 220,
-    
-  }
+    width: '70%',
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: '#fff',
+    paddingHorizontal:42,
+    paddingVertical: 16,
+    borderRadius: 25,
+    width: '70%',
+    marginBottom: 20,
+  },
 });
