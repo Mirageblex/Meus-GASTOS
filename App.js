@@ -6,20 +6,19 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
- 
+
 export default function App() {
   const [login, setLogin] = useState('');
-  const [noLogin, setNoLogin] = useState(false);
   const [message, setMessage] = useState('');
- 
+
   useEffect(() => {
-    if (!login && !noLogin) {
-      setMessage('Campo vazio');
+    if (!login) {
+      setMessage('Preencha os campos necessários');
     } else {
       setMessage('');
     }
-  }, [login, noLogin]);
- 
+  }, [login]);
+
   return (
     <View style={styles.container}>
       <Text style={styles.texto}>{message}</Text>
@@ -29,16 +28,13 @@ export default function App() {
         onChangeText={setLogin}
         value={login}
       />
-      <TouchableOpacity style={styles.button} onPress={() => setNoLogin(true)}>
-        <Text>Não tenho login</Text>
-      </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={() => console.log('Entrar')}>
         <Text>Entrar</Text>
       </TouchableOpacity>
     </View>
   );
 }
- 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
