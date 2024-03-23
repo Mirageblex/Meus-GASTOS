@@ -1,66 +1,97 @@
-import React, { useState, useEffect } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 
 export default function App() {
-  const [login, setLogin] = useState('');
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    if (!login) {
-      setMessage('Preencha os campos necessários');
-    } else {
-      setMessage('');
-    }
-  }, [login]);
-
   return (
-    <View style={styles.container}>
-      <Text style={styles.texto}>{message}</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Login"
-        onChangeText={setLogin}
-        value={login}
-      />
-      <TouchableOpacity style={styles.button} onPress={() => console.log('Entrar')}>
-        <Text>Entrar</Text>
-      </TouchableOpacity>
+    <View style={estilos.container}>
+      <Text style={estilos.texto}>
+        Email
+      </Text>
+      <Image source={require('./assets/MEUS_GASTOS.png')} style={estilos.image} />
+   <View style={estilos.formContainer}>  
+        <TextInput    // campo de preenchimento
+          style={estilos.input}
+          placeholder="E-mail"
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+
+        
+        <TextInput  // campo de preenchimento
+          style={estilos.input}
+          placeholder="Senha"
+          secureTextEntry
+        />
+      </View>
+      <View style={estilos.buttonContainer}>
+        <TouchableOpacity style={[estilos.button, styles.centered]}>   
+          <Text style={estilos.buttonText}>Entrar</Text>
+        </TouchableOpacity> 
+        <TouchableOpacity style={[estilos.button, styles.centered]}>
+          <Text style={estilos.buttonText}>Esqueci a senha</Text>
+        </TouchableOpacity>    
+      </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const estilos = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFA630',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 8,
+    backgroundColor: '#FFA630',
   },
-  texto: {
-    color: '#000',
-    fontSize: 14,
+  image: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    width: '100%',
+    height: '65%',
+    resizeMode: 'cover',
+  },
+  formContainer: {
+    width: '100%',
+    paddingHorizontal: 40,
+    marginBottom: 30,
+    marginTop: 150,
   },
   input: {
-    backgroundColor: '#fff',
-    paddingHorizontal: 42,
-    paddingVertical: 16,
-    borderRadius: 25,
-    width: '70%',
-    marginBottom: 20,
+    height: 40,
+    backgroundColor: 'white',
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    borderRadius: 5,
+    padding: 10,
+    width: '100%',
+  },
+  buttonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '65%',
+    position: 'absolute',
+    bottom: 0,
+    paddingHorizontal: 40,
   },
   button: {
     backgroundColor: '#fff',
-    paddingHorizontal:42,
-    paddingVertical: 16,
+    paddingHorizontal: 42,
+    paddingVertical: 12,
     borderRadius: 25,
-    width: '70%',
-    marginBottom: 20,
+    width:'80%',
+    marginBottom: -40,
+    marginTop: 50,
+  },
+  buttonText: {
+    color: '#000',
+    fontSize: 16,
+  },
+});
+
+const styles = StyleSheet.create({
+  centered: {
+    alignItems: 'center',
   },
 });
