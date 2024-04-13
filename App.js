@@ -1,10 +1,10 @@
+
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 
 export default function App() {
   return (
     <View style={estilos.container}>
       <Text style={estilos.texto}>
-        Email
       </Text>
       <Image source={require('./assets/MEUS_GASTOS.png')} style={estilos.image} />
    <View style={estilos.formContainer}>  
@@ -14,7 +14,6 @@ export default function App() {
           keyboardType="email-address"
           autoCapitalize="none"
         />
-
         
         <TextInput  // campo de preenchimento
           style={estilos.input}
@@ -39,7 +38,7 @@ const estilos = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFA630',
+    backgroundColor: '#7AF0D7',
   },
   image: {
     position: 'absolute',
@@ -76,10 +75,13 @@ const estilos = StyleSheet.create({
     paddingHorizontal: 40,
   },
   button: {
-    backgroundColor: '#fff',
+    backgroundColor: '#B7EFE7',
     paddingHorizontal: 42,
     paddingVertical: 12,
     borderRadius: 25,
+    borderColor: 'gray',
+    borderWidth: 1,
+
     width:'80%',
     marginBottom: -40,
     marginTop: 50,
@@ -88,10 +90,13 @@ const estilos = StyleSheet.create({
     color: '#000',
     fontSize: 16,
   },
+
 });
 
 const styles = StyleSheet.create({
   centered: {
     alignItems: 'center',
   },
+
+
 });
